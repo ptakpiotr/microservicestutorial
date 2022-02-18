@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqlserver
+spec:
+  selector:
+    matchLabels:
+      app: sqlserver
+  template:
+    metadata:
+      labels:
+        app: sqlserver
+    spec:
+      containers:
+      - name: sqlserver
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_PID
+          value: "Express"
+        - name: SA_PASSWORD
+          value: ""
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sqlserver-lb
+spec:
+  type: NodePort
+  selector:
+    app: sqlserver
+  ports:
+  - port: 1433
+

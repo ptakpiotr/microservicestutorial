@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>bcaaada7-e7cf-4f01-9c28-f5c4b6ce97e5</UserSecretsId>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="HotChocolate.AspNetCore" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.6.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+		<PackageReference Include="RabbitMQ.Client" Version="6.2.3" />
+		<PackageReference Include="GraphQL.Server.Ui.Voyager" Version="5.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.2" />
+
+	</ItemGroup>
+</Project>
