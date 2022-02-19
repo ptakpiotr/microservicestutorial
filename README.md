@@ -9,7 +9,7 @@
 
 ## General info
 
-The project based on Microservices Tutorial, you can find **here**
+The project based on Microservices Tutorial, you can find [**here**](https://www.youtube.com/watch?v=DgVjEo3OGBI)
 However, I decided to create CommandsAPI as the GraphQL one and PlatformsAPI as Minimal API. Also Polly was included
 
 ## Technologies
