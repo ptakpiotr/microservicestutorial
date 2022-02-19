@@ -1,5 +1,6 @@
 using CommandsAPI.GraphQL;
 using CommandsAPI.GraphQL.Types;
+using CommandsAPI.Grpc;
 using CommandsAPI.Polly;
 using CommandsAPI.Profiles;
 using CommandsAPI.RabbitMQ;
@@ -15,6 +16,7 @@ services.AddPooledDbContextFactory<AppDbContext>(opts =>
 });
 services.AddSingleton<BrokerPolicy>();
 services.AddSingleton<IEventProcessor, EventProcessor>();
+services.AddScoped<IGrpcClient, GrpcClient>();
 services.AddHostedService<EventSubscriber>();
 
 services.AddAutoMapper(typeof(MainProfile));
@@ -33,5 +35,7 @@ var app = builder.Build();
 
 app.MapGraphQL("/graphql");
 app.MapGraphQLVoyager();
+app.CallGrpc();
 
 app.Run();
+

@@ -18,8 +18,13 @@ However, I decided to create CommandsAPI as the GraphQL one and PlatformsAPI as 
 - ASP .NET 6 MinimalAPI
 - Polly
 - RabbitMQ
-- Kubernetes
+- gRPC
+- Kubernetes [Work in progress...]
 
 ## Usage
 
 Currently no usage details
+
+## Updates
+
+- 19.02 --> added gRPC

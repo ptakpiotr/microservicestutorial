@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PlatformsAPI;
 
 namespace CommandsAPI.Profiles
 {
@@ -10,6 +11,7 @@ namespace CommandsAPI.Profiles
                 .ForMember(dest=>dest.Id,opts=>opts.Ignore());
                 
             CreateMap<CommandCreateDTO, CommandModel>();
+            CreateMap<GrpcPlatformModel, PlatformModel>().ForMember(dest=>dest.Id,opts=>opts.Ignore());
         }
     }
 }

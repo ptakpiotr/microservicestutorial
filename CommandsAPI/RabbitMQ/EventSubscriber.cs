@@ -22,17 +22,23 @@ namespace CommandsAPI.RabbitMQ
                 HostName = config["Rabbit:Host"],
                 Port = int.Parse(config["Rabbit:Port"])
             };
-
-            policy.BrokerUnreachableFixedDelay.Execute(() =>
+            try
             {
-                Console.WriteLine("RETRIED");
-                _connection = factory.CreateConnection();
-                _channel = _connection.CreateModel();
-                _channel.ExchangeDeclare("my_exchange", ExchangeType.Fanout);
+                policy.BrokerUnreachableFixedDelay.Execute(() =>
+                {
+                    Console.WriteLine("RETRIED");
+                    _connection = factory.CreateConnection();
+                    _channel = _connection.CreateModel();
+                    _channel.ExchangeDeclare("my_exchange", ExchangeType.Fanout);
 
-                _queueName = _channel.QueueDeclare().QueueName;
-                _channel.QueueBind(_queueName, "my_exchange", "", null);
-            });
+                    _queueName = _channel.QueueDeclare().QueueName;
+                    _channel.QueueBind(_queueName, "my_exchange", "", null);
+                });
+            }
+            catch (Exception ex)
+            {
+                // retry
+            }
         }
 
 

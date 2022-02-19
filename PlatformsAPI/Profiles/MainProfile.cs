@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-
 namespace PlatformsAPI.Profiles
 {
     public class MainProfile : Profile
@@ -9,6 +8,7 @@ namespace PlatformsAPI.Profiles
             CreateMap<PlatformModel,PlatformReadDTO>();
             CreateMap<PlatformCreateDTO, PlatformModel>();
             CreateMap<PlatformModel,PlatformPublishDTO>();
+            CreateMap<PlatformModel, GrpcPlatformModel>();
         }
     }
 }

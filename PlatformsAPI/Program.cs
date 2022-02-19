@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PlatformsAPI;
+using PlatformsAPI.Grpc;
 using PlatformsAPI.Profiles;
 using PlatformsAPI.RabbitMQ;
 
@@ -23,9 +24,11 @@ services.AddDbContext<AppDbContext>(opts =>
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 services.AddAutoMapper(typeof(MainProfile));
+services.AddGrpc();
 
 services.AddScoped<IPlatformsRepo, PlatformsRepo>();
 services.AddSingleton<IEventPublisher, EventPublisher>();
+services.AddScoped<IPlatformsGrpcService, PlatformsGrpcService>();
 
 var app = builder.Build();
 
@@ -39,5 +42,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseGlobalEndpoints();
+app.MapGrpcService<PlatformsGrpcService>();
 app.MigrateAndSeed();
 app.Run();

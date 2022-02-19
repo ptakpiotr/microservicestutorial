@@ -10,7 +10,7 @@ namespace CommandsAPI.Polly
 
         public BrokerPolicy()
         {
-            BrokerUnreachableFixedDelay = Policy.Handle<BrokerUnreachableException>()
+            BrokerUnreachableFixedDelay = Policy.Handle<Exception>()
                 .WaitAndRetry(5, retryNumber => TimeSpan.FromSeconds(1));
         }
     }
